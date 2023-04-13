@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ItemAsset>
+@{
+    ViewData["Title"] = "Items For Sale";
+    ViewBag.Title = "Items For Sale";
+}
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Minimum Bid</th>
+            <th>Auction Start Date</th>
+            <th>Auction End Date</th>
+            <th>Status</th>
+            <th>Location</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+    <tbody>
+            @foreach (ItemAsset i in Model)
+            {
+            <tr>
+
+                <td>
+                    <a asp-controller="Item" asp-action="DetailsAsset"
+                   asp-route-id="@i.ItemId">@i.ProductName</a>
+                </td>
+                <td>@i.ProductDescription</td>
+                <td>$@i.MinimumBidAmount</td>
+                <td>@i.AuctionStartDate</td>
+                <td>@i.AuctionEndDate</td>
+                <td>@i.ItemCondition</td>
+                <td>@i.Location</td>
+                <td><img style="width:90px; height:90px" alt="@i.ProductName" src=@i.ImageUrl></td>
+            </tr>
+            }
+
+    </tbody>
+
+</table>
+

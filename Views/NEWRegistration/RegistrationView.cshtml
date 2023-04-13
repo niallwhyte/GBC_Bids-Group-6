@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Log In";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div>
+
+    <form asp-controller="NEWRegistration" asp-action="RegisterUser" method="post">
+        <input type="text" name="username" placeholder="Enter Username" /><br>
+
+        <input type="password" name="password" placeholder="Enter Password" /><br>
+
+        <input type="password" name="confirmPassword" placeholder="Repeat Password" /><br>
+
+        <input type="text" name="email" placeholder="Enter Email" /><br>
+
+        <input type="submit" value="Register" />
+
+    </form>
+
+</div>
+@if (ViewBag.EmptyUsernameErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.EmptyUsernameErrorMessage</div>
+}
+
+@if (ViewBag.EmptyPasswordErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.EmptyPasswordErrorMessage</div>
+}
+
+@if (ViewBag.PasswordsDontMatchErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.PasswordsDontMatchErrorMessage</div>
+}
+
+@if (ViewBag.EmptyEmailErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.EmptyEmailErrorMessage</div>
+}
+
+@if (ViewBag.InvalidRegisterErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.InvalidRegisterErrorMessage</div>
+}
+
+@if (ViewBag.TakenUsernameErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.TakenUsernameErrorMessage</div>
+}
+
+@if (ViewBag.TakenEmailErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.TakenEmailrErrorMessage</div>
+}
+

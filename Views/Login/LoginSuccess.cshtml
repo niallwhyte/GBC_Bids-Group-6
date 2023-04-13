@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Log In Success!!!";
+}
+<h1>@ViewData["Title"]</h1>
+<h2>LOGIN SUCCESS</h2>
+<p>You have logged in successfully @ViewBag.usern !</p>
+
+<script>
+    document.cookie = "username=@ViewBag.AccountID; path=/;";
+</script>
+
+<form asp-controller="Home" asp-action="Index" method="post">
+    <input type="submit" value="Return to Home Page"/>
+</form> 
+
+

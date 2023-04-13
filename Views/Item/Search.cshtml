@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ItemAsset>
+@{
+    ViewData["Title"] = "Item For Sale";
+    ViewBag.Title = "Search";
+}
+<form asp-controller="Item" asp-action="Search" method="post">
+
+     <input type="text" placeholder="Search.." name="search">
+
+    <label for="sorting">Sort By:</label>
+    <select id="sorting" name="sorting">
+            <option value="NA">Order by Name (Asc)</option>
+            <option value="ND">Order by Name (Dsc)</option>
+            <option value="PA">Order by Price (Asc)</option>
+            <option value="PD">Order by Price (Dsc)</option>
+            <option value="TA">Order by Date</option>
+    </select>
+    <label for="cat_choice">Category:</label>
+    <select id="cat_choice"name="cat_choice">
+            <option>All</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.Id">@c.Name</option>
+            }
+    </select>
+    <label for="con_choice">Condition:</label>
+    <select id="con_choice"name="con_choice">
+            <option>All</option>
+            @foreach (Condition c in ViewBag.Conditions)
+            {
+                <option value="@c.Id">@c.Name</option>
+            }
+    </select>
+    <input type="submit" value="Search" />
+    </form>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Minimum Bid</th>
+            <th>Auction Start Date</th>
+            <th>Auction End Date</th>
+            <th>Condition</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+    <tbody>
+            @foreach (ItemAsset i in Model)
+            {
+            <tr>
+
+                <td>
+                    <a asp-controller="Item" asp-action="DetailsAsset"
+                   asp-route-id="@i.ItemId">@i.ProductName</a>
+                </td>
+                <td>@i.ProductDescription</td>
+                <td>$@i.MinimumBidAmount</td>
+                <td>@i.AuctionStartDate</td>
+                <td>@i.AuctionEndDate</td>
+                <td>@i.ItemCondition</td>
+                <td>@i.CategoryID</td>
+                <td><img style="width:250px; height:250px" src=@i.ImageUrl></td>
+            </tr>
+            }
+
+    </tbody>
+</table>
+

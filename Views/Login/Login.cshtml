@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Log In";
+}
+<h1>@ViewData["Title"]</h1>
+<div>
+
+    <form asp-controller="Login" asp-action="Test" method="post">
+        <input type="text" name="username" placeholder="Enter Username" /><br>
+
+        <input type="password" name="password" placeholder="Password" /><br>
+
+        <input type="submit" value="LOGIN" />
+
+    </form>
+
+</div>
+@if (ViewBag.EmptyUsernameErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.EmptyUsernameErrorMessage</div>
+}
+
+@if (ViewBag.EmptyPasswordErrorMessage != null)
+{
+    <div class="alert alert-danger">@ViewBag.EmptyPasswordErrorMessage</div>
+}
+
+@if (ViewBag.InvalidLoginErrorMessage != null)
+{
+        <div class="alert alert-danger">@ViewBag.InvalidLoginErrorMessage</div>
+}
+

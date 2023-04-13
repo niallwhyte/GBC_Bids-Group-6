@@ -1,0 +1,97 @@
+﻿@model ItemAsset
+@{
+    ViewData["Title"] = $"Sell Item";
+    ViewBag.Title = $"Sell Item";
+}
+
+<h2>@ViewBag.Action Item</h2>
+
+<form asp-controller="Item" asp-action="Add" method="post">
+    <table>
+        <tr>
+            <td><label asp-for="ProductName">Product Name</label></td>
+            <td><input asp-for="ProductName" class="form-control" /></td>
+            <td><span asp-validation-for="ProductName" class="text-danger"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="ProductDescription">Product Description</label></td>
+            <td><textarea asp-for="ProductDescription" class="form-control"></textarea></td>
+            <td><span asp-validation-for="ProductDescription" class="text-danger"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="MinimumBidAmount">Minimum Bid Amount </label></td>
+            <td><input asp-for="MinimumBidAmount" class="form-control" /></td>
+            <td><span asp-validation-for="MinimumBidAmount" class="text-danger"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="AuctionEndDate"></label></td>
+            <td><input asp-for="AuctionEndDate" type="datetime-local" value="@DateTime.Now.AddDays(1).ToString("yyyy-MM-ddTHH:mm")  /></td>
+            <td><span asp-validation-for="AuctionEndDate" class="text-danger"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="ItemCondition">Item Status</label></td>
+            <td>
+                <select asp-for="ItemCondition">
+                    <option value="New">New</option>
+                    <option value="Used">Used</option>
+                </select>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td><label asp-for="CategoryID">Category</label></td>
+            <td>
+                <select asp-for="CategoryID" class="form-control">
+                <option value="">Item Category</option> 
+                @foreach (Category c in ViewBag.Categories)
+                {
+                    <option value="@c.Id">@c.Name</option>
+                }
+                </select>
+            </td>
+            <td><span asp-validation-for="CategoryID" class="text-danger"></span></td>
+
+        </tr>
+                <tr>
+            <td><label asp-for="ConditionID">Condition</label></td>
+            <td>
+                <select asp-for="ConditionID" class="form-control">
+                <option value="">Item Condition</option> 
+                @foreach (Condition d in ViewBag.Conditions)
+                {
+                    <option value="@d.Id">@d.Name</option>
+                }
+                </select>
+            </td>
+            <td><span asp-validation-for="ConditionID" class="text-danger"></span></td>
+        </tr>
+                <tr>
+            <td><label asp-for="Location">Location</label></td>
+            <td><input asp-for="Location" class="form-control" /></td>
+            <td><span asp-validation-for="Location" class="text-danger"></span></td>
+        </tr>
+        <tr>
+            <td><label asp-for="ImageUrl">Image Url</label></td>
+            <td><input asp-for="ImageUrl" class="form-control" /></td>
+            <td><span asp-validation-for="ImageUrl" class="text-danger"></span></td>
+        </tr>
+        <td><button type="submit">@ViewBag.Action</button></td>
+
+
+
+
+        @if (ViewBag.Action == "Add")
+        {
+            <td>
+                <a asp-controller="Home" asp-action="Index" class="exitform">Cancel</a>
+            </td>
+        }
+        else
+        {
+            // Add
+            <td><a asp-controller="Home" asp-action="Index">Canlcel</a></td>
+        }
+
+    </table>
+</form>
