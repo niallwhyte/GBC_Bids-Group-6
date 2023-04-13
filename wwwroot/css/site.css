@@ -1,0 +1,60 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+body {
+    background-color: gainsboro;
+}
+
+#navibar{
+    background-color: slategray;
+}
+
+#navsearch{
+    float: right;
+}
+
+#upperbanner {
+    background-image: url(../images/toronto-banner.jpg);
+    height: 300px;
+    font-size: xx-large;
+    position: relative;
+}
+
+#upperbanner h1{
+    color: red;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);;
+}
+
+.exitform{
+    text-decoration: none;
+    color: red;
+}
+
+.nav-item{
+    color: white;
+}
+
+a{
+    text-decoration: none;
+}
